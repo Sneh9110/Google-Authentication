@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 16%;
+    --muted-foreground: 0 0% 50%;
+
+    --accent: 0 0% 10%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 0 0% 100%;
+
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-black text-white;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  p {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.6;
+  }
+}
+
+@layer components {
+  .glass-effect {
+    @apply bg-black-lighter/60 backdrop-blur-2xl border border-gray-dark/50 shadow-2xl;
+    -webkit-backdrop-filter: blur(40px);
+  }
+  
+  .text-gradient {
+    @apply text-white;
+  }
+  
+  .glow-border {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .neon-button {
+    @apply relative overflow-hidden px-8 py-4 rounded-full font-semibold text-base tracking-tight transition-all duration-300 ease-out bg-white/95 text-black backdrop-blur-xl;
+    letter-spacing: -0.01em;
+    box-shadow: 0 4px 24px rgba(255, 255, 255, 0.15), 0 2px 8px rgba(255, 255, 255, 0.1);
+  }
+
+  .neon-button:hover {
+    @apply bg-white text-black scale-[1.02];
+    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.25), 0 4px 12px rgba(255, 255, 255, 0.15);
+  }
+
+  .neon-button:active {
+    @apply scale-[0.98];
+  }
+
+  .nav-link {
+    @apply relative text-gray-light hover:text-white transition-all duration-200;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    font-size: 0.9375rem;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute left-0 bottom-[-6px] w-0 h-[2px] bg-white transition-all duration-200 rounded-full;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  /* New simple skill badge design */
+  .skill-badge-simple {
+    @apply px-5 py-2.5 rounded-full text-white bg-white/5 border border-white/10 backdrop-blur-xl;
+    font-weight: 500;
+    font-size: 0.875rem;
+    letter-spacing: -0.01em;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .skill-badge-simple:hover {
+    @apply bg-white text-black border-white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Improved cursor styles - optimized */
+.custom-cursor {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.1s ease, height 0.1s ease;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.custom-cursor.cursor-hover {
+  width: 40px;
+  height: 40px;
+  border-color: rgba(255,255,255,0.5);
+}
+
+.cursor-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.8);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.cursor-dot-hover {
+  width: 6px;
+  height: 6px;
+  background-color: rgba(255,255,255,1);
+}
+
+/* Keep existing code for other styles */
+.particle {
+  @apply absolute rounded-full;
+  background: linear-gradient(to right, #7F00FF, #E100FF);
+  opacity: 0.5;
+  filter: blur(2px);
+  animation: particle-pulse 4s infinite alternate;
+}
+
+@keyframes particle-pulse {
+  0% { filter: blur(2px); opacity: 0.5; }
+  100% { filter: blur(4px); opacity: 0.8; }
+}
+
+/* Perspective utility for 3D transforms */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Card Styles */
+.project-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+}
+
+.project-card .card-content {
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+}
+
+/* Floating gallery */
+.photo-card {
+  @apply rounded-2xl overflow-hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.8);
+}
+
+.photo-card:hover {
+  transform: scale(1.03) translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.9);
+}
+
+/* Form inputs */
+.glow-input {
+  @apply bg-white/5 border border-white/10 rounded-2xl px-4 py-3.5 w-full text-white backdrop-blur-xl;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-input:focus {
+  @apply border-white/30;
+  background-color: rgba(255, 255, 255, 0.08);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.05);
+}
+
+.glow-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
